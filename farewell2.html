@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farewell Celebration 🎉</title>
+  
+  <!-- Animate.css for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2"></script>
+
+  <style>
+    /* General Styling */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      background: radial-gradient(circle, #1a2a6c, #b21f1f, #fdbb2d);
+      padding-bottom: 80px;
+      position: relative;
+    }
+    
+    /* Container */
+    .container {
+      max-width: 800px;
+      margin: 90px auto;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+      color: #fff;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+    
+    /* Title Animation */
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0;
+      animation: glowTitle 2s infinite alternate;
+    }
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0;
+      animation: glowTitle 2s infinite alternate;
+    }
+    footer {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0;
+      animation: glowTitle 2s infinite alternate;
+    }
+
+    /* Neon Glow Effect */
+    @keyframes glowTitle {
+      from { text-shadow: 0 0 10px #ff0, 0 0 20px #ff0; }
+      to { text-shadow: 0 0 30px #ff0, 0 0 40px #ff0; }
+    }
+
+    /* RSVP Form */
+    #rsvpForm input, #imageInput {
+      width: 80%;
+      padding: 10px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    #rsvpForm input:focus, #imageInput:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    button {
+      background: linear-gradient(135deg, #ff9a00, #ff3d00);
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px rgba(255, 69, 0, 0.8);
+    }
+
+    button:hover { transform: scale(1.1); background: #ff3d00; }
+
+    /* RSVP List */
+    #rsvpList { list-style: none; margin-top: 20px; padding: 0; }
+    #rsvpList li {
+      margin: 5px 0;
+      padding: 5px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      animation: slideIn 0.5s ease-in-out;
+    }
+
+    /* Fireworks Background */
+    @keyframes fireworks {
+      0% { opacity: 0.5; transform: translateY(10px); }
+      50% { opacity: 1; transform: translateY(-10px); }
+      100% { opacity: 0.5; transform: translateY(10px); }
+    }
+
+    .firework {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: gold;
+      border-radius: 50%;
+      opacity: 0;
+      animation: fireworks 2s infinite ease-in-out alternate;
+    }
+
+    /* Floating Footer */
+    #footer {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: #FFD700;
+      padding: 12px 25px;
+      border-radius: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+      animation: fadeIn 2s ease-in-out, floatUpDown 3s infinite alternate;
+    }
+
+    @keyframes floatUpDown {
+      from { transform: translateX(-50%) translateY(0); }
+      to { transform: translateX(-50%) translateY(-5px); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="aishta-aishta.mp3" type="audio/mp3">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <div class="container animate__animated animate__fadeIn">
+    <h1>🎉 Farewell Celebration 🎉</h1>
+
+    <!-- RSVP Form -->
+    <form id="rsvpForm">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <button type="submit">Submit RSVP</button>
+    </form>
+
+    <!-- RSVP Display -->
+    <div id="rsvpDisplay">
+      <p id="rsvpCount">Total Members Count: 0</p>
+      <ul id="rsvpList"></ul>
+    </div>
+  </div>
+  <div class="gallery-container">
+    <h2>📸 Memorable Images 📸</h2>
+    <form id="imageUploadForm">
+      <input type="file" id="imageInput" accept="image/*" required>
+      <button type="submit">Upload Image</button>
+    </form>
+    <div id="gallery"></div>
+  </div>
+</div>
+<style>.gallery-container {
+    max-width: 800px;
+    margin: 90px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+    
+    
+
+  }</style>
+
+  <!-- Footer -->
+  <footer id="footer">
+    Made by - <span class="glow-text">King Adi [Aditya] 👑</span>
+  </footer>
+
+  <script>
+   
+// RSVP Submission with Confetti Effect and Count Update
+document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let name = this.name.value.trim();
+    if (name === "") {
+        alert("Please enter your name!");
+        return;
+    }
+
+    // Adding name to RSVP list
+    let listItem = document.createElement("li");
+    listItem.textContent = name;
+    document.getElementById("rsvpList").appendChild(listItem);
+
+    // Updating RSVP count
+    let rsvpCountEl = document.getElementById("rsvpCount");
+    let currentCount = parseInt(rsvpCountEl.textContent.match(/\d+/)[0]); // Extracting number
+    rsvpCountEl.textContent = "Total Members Count: " + (currentCount + 1);
+
+    // Confetti Animation 🎉
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+
+    this.reset();
+});
+
+    // Fireworks Background
+    function createFirework() {
+      let firework = document.createElement("div");
+      firework.classList.add("firework");
+      firework.style.left = Math.random() * 100 + "vw";
+      firework.style.top = Math.random() * 100 + "vh";
+      document.body.appendChild(firework);
+      
+      setTimeout(() => { firework.remove(); }, 2000);
+    }
+    
+    setInterval(createFirework, 500);
+    // Image Upload
+    document.getElementById("imageUploadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let file = document.getElementById("imageInput").files[0];
+      let reader = new FileReader();
+      reader.onload = function(event) {
+        let img = document.createElement("img");
+        img.src = event.target.result;
+        document.getElementById("gallery").appendChild(img);
+      };
+      reader.readAsDataURL(file);
+      this.reset();
+    });
+    function goToNextPage() {
+      window.location.href = "farewell-message.html"; // Change this to your next page URL
+    }
+    </script>
+ 
+
+<div class="btn-container">
+    <p class="timer">Redirecting in <span id="countdown">10</span> seconds... ⏳</p>
+
+
+    <button onclick="goToNextPage()">➡️ Next page</button>
+  </div>
+<style>.timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    margin-top: 20px;
+    animation: pulse 1s infinite alternate;}
+    </style>
+   
+    
+</body>
+</html>
